@@ -37,11 +37,11 @@ createApp({
         },
         completeTask(index) {
             this.tasks[index].completed = !this.tasks[index].completed;
-            console.log(this.tasks[index].completed)
+            //console.log(this.tasks[index].completed)
             axios.post(this.url, { isCurrentCompleted: { completed: this.tasks[index].completed, index: index } }, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }).then(resp => {
-                console.log(resp);
+                //console.log(resp);
                 this.tasks = resp.data;
             }).catch(err => {
                 console.log(err);

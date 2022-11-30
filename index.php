@@ -13,6 +13,17 @@
 </head>
 
 <body>
+    <div id="app">
+        <main id="site_main">
+            <div class="container">
+                <div class="row">
+                    <ul class="col-12 col-md-7 list-unstyled list-group list-group-flush">
+                        <li v-for="task in tasks" class="list-group-item">{{task.title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
 
 </body>
 

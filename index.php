@@ -23,7 +23,7 @@
                         <ul class="tasks list-unstyled list-group list-group-flush my-3">
                             <li v-for="(task,i) in tasks" class="list-group-item fs-4 d-flex justify-content-between" @click="completeTask(i)"> <span :class="task.completed ? 'completed' : ''">{{task.title}}
                                 </span>
-                                <i class="fa-solid fa-trash p-2 bg-danger text-white rounded-2" @click="delTask(i)"></i>
+                                <i class="fa-solid fa-trash p-2 bg-danger text-white rounded-2" @click.stop="delTask(i)"></i>
                             </li>
                         </ul>
                         <div class="d-flex">

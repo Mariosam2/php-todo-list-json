@@ -21,9 +21,9 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-5">
                         <ul class="tasks list-unstyled list-group list-group-flush my-3">
-                            <li v-for="(task,i) in tasks" class="list-group-item fs-4 d-flex justify-content-between" @click="completeTask(i)"> <span :class="task.completed ? 'completed' : ''">{{task.title}}
+                            <li v-for="(task,i) in tasks" class="list-group-item fs-4 d-flex justify-content-between"> <span class="clickable" :class="task.completed ? 'completed' : ''" @click="completeTask(i)">{{task.title}}
                                 </span>
-                                <i class="fa-solid fa-trash p-2 bg-danger text-white rounded-2" @click.stop="delTask(i)"></i>
+                                <i class="clickable fa-solid fa-trash p-2 bg-danger text-white rounded-2" @click.stop="delTask(i)"></i>
                             </li>
                         </ul>
                         <div class="d-flex">

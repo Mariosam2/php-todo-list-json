@@ -6,3 +6,7 @@ button.btn.ms_btn.btn-primary {
 .completed {
     text-decoration: line-through;
 }
+
+.clickable:hover {
+    cursor: pointer;
+}

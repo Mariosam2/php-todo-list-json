@@ -21,16 +21,20 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-5">
                         <ul class="tasks list-unstyled list-group list-group-flush my-3">
-                            <li v-for="(task,i) in tasks" class="list-group-item fs-4 d-flex justify-content-between">{{task.title}} <i class="fa-solid fa-trash p-2 bg-danger text-white rounded-2" @click="delTask(i)"></i></li>
+                            <li v-for="(task,i) in tasks" class="list-group-item fs-4 d-flex justify-content-between" @click="completeTask(i)"> <span :class="task.completed ? 'completed' : ''">{{task.title}}
+                                </span>
+                                <i class="fa-solid fa-trash p-2 bg-danger text-white rounded-2" @click="delTask(i)"></i>
+                            </li>
                         </ul>
-                        <form action="server.php" class="d-flex" method="POST">
+                        <div class="d-flex">
                             <div class="mb-2 flex-grow-1">
                                 <label for="" class="form-label fw-semibold">Add new Task</label>
-                                <input type="text" name="newTask" id="newTask" class="form-control" placeholder="exampleTask" aria-describedby="helpId">
+                                <input type="text" name="newTask" id="newTask" class="form-control" placeholder="exampleTask" aria-describedby="helpId" v-model="newTask">
                                 <small id="helpId" class="text-muted">*click on a task to complete it</small>
                             </div>
-                            <button type="submit" class="btn ms_btn btn-primary flex-grow-1 ms-4" @click="getTasks">Add</button>
-                        </form>
+                            <button type="submit" class="btn ms_btn btn-primary flex-grow-1 ms-4" @click="addTask">Add</button>
+                        </div>
+
                     </div>
                 </div>
 

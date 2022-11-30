@@ -3,7 +3,8 @@ createApp({
     data() {
         return {
             tasks: null,
-            url: 'server.php'
+            url: 'server.php',
+            newTask: '',
         }
     },
     methods: {
@@ -17,14 +18,46 @@ createApp({
                     console.log(err);
                 })
         },
-        delTask(index) {
-            if (this.tasks !== null) {
-                console.log(this.tasks[index])
-                this.tasks.splice(index, 1);
+        addTask() {
+            //console.log(this.newTask.replace(/\s/g, '').length);
+            if (this.newTask.replace(/\s/g, '').length !== 0) {
+                axios.post(this.url, { newTask: this.newTask }, {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                }).then(resp => {
+                    //console.log(resp);
+                    this.tasks = resp.data;
+                }).catch(err => {
+                    console.log(err);
+                })
+
             }
-            /* axios.delete(this.url, {
-                
-            }) */
+            this.newTask = '';
+
+
+        },
+        completeTask(index) {
+            this.tasks[index].completed = !this.tasks[index].completed;
+            console.log(this.tasks[index].completed)
+            axios.post(this.url, { isCurrentCompleted: { completed: this.tasks[index].completed, index: index } }, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            }).then(resp => {
+                console.log(resp);
+                this.tasks = resp.data;
+            }).catch(err => {
+                console.log(err);
+            })
+
+        },
+        delTask(index) {
+            axios.post(this.url, { taskIndex: index }, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            }).then(resp => {
+                //console.log(resp);
+                this.tasks = resp.data;
+            }).catch(err => {
+                console.log(err);
+            })
+
 
 
         }

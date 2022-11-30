@@ -16,6 +16,17 @@ createApp({
                 .catch(err => {
                     console.log(err);
                 })
+        },
+        delTask(index) {
+            if (this.tasks !== null) {
+                console.log(this.tasks[index])
+                this.tasks.splice(index, 1);
+            }
+            /* axios.delete(this.url, {
+                
+            }) */
+
+
         }
     },
     mounted() {
